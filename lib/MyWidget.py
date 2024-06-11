@@ -1,6 +1,7 @@
 # import sys
 import random
 from PySide6 import QtCore, QtWidgets, QtGui
+from model import FormCategory
 # from controller import Controller
 
 
@@ -21,11 +22,12 @@ class MyWidget(QtWidgets.QWidget):
         # self.button.clicked.connect(self.magic)
 
 
-        combo = QtWidgets.QComboBox(self)
-        combo.addItems(category)
-        self.layout.addWidget(combo)
-        combo.move(50, 50)
+        self.combo = QtWidgets.QComboBox(self)
+        self.combo.addItems(category)
+        self.layout.addWidget(self.combo)
+        self.combo.move(50, 50)
         self.setGeometry(300, 300, 300, 200)
+        self.combo.currentTextChanged.connect(self.categoryNews)
         # self.setWindowTitle('QComboBox')
         # self.show()
 
@@ -38,6 +40,16 @@ class MyWidget(QtWidgets.QWidget):
         self.newsArea.setText(news_feed)
         self.newsArea.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignRight)
         self.layout.addWidget(self.newsArea)
+
+
+
+    def categoryNews(self, category):
+        # print(category)
+        data = FormCategory().getNewsCategory(category)
+        news_feed = ""
+        for new in data:
+            news_feed = f"{news_feed}{new}\n"
+        self.newsArea.setText(news_feed)
 
 
 

@@ -26,6 +26,9 @@ class FormCategory:
         return categories
 
     def getNewsCategory(self, category):
+        if category == "all":
+            return self.getAllNews()
+
         data = self.getAllData()
         for key in data.keys():
             if key == category:
