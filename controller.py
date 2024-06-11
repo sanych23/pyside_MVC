@@ -9,7 +9,6 @@ class Controller:
     
 
     def mainAction(self) -> None:
-
         model = FormMain()
         InitWindow(model.getAllData())   
 

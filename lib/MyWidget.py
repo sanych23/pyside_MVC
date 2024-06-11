@@ -20,6 +20,19 @@ class MyWidget(QtWidgets.QWidget):
 
         self.button.clicked.connect(self.magic)
 
+
+        combo = QtWidgets.QComboBox(self)
+        combo.addItems(["Январь", "Февраль",
+                        "Март", "Апрель", "Май"])
+ 
+        combo.move(50, 50)
+ 
+        self.setGeometry(300, 300, 300, 200)
+        # self.setWindowTitle('QComboBox')
+        # self.show()
+
+
+
     @QtCore.Slot()
     def magic(self):
         data = random.choice(self.hello)
