@@ -1,1 +1,1 @@
-{"all": [],"sport": [],"cars": [],"fashion": [],"build": [],"game": [],"movie": [],}
+{"all": [],"sport": ["footbal match", "hookey match", "tennis match"],"cars": ["new bmw", "new mersedes", "new audi", "new lada", "new pegeout"],"fashion": ["new clothes", "fashion presentation"],"build": ["build house", "build garage", "build route"],"game": ["new strategy", "new RPG", "new shooter"],"movie": ["new marvel movie", "new serial", "new drama movie"]}

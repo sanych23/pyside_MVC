@@ -1,12 +1,37 @@
+import json
+
+
 class FormCategory:
     _data_base = "category.txt"
 
-    def getAllCategory(self):
+    def getAllData(self):
         link = open(self._data_base, "r")
         data = link.readline()
-        print(data)
+        data = json.loads(data)
+        return data
+    
+    def getAllCategory(self):
+        data = self.getAllData()
+        categories = list()
+        for key in data.keys():
+            categories.append(key)
+        return categories
 
-FormCategory.getAllCategory()
+    def getCategory(self, category):
+        data = self.getAllData()
+        for key in data.keys():
+            if key == category:
+                return data[key]
+
+
+
+
+
+
+
+
+# FormCategory().getAllCategory()
+
     # _data_hello = ["Hallo Welt", "Hei maailma", "Hola Mundo", "Привет мир"]
 
     # _data_name = ["Саша", "Sasha", "usasha", "main Alex"]
