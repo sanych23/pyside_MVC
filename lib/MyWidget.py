@@ -1,13 +1,14 @@
-import sys
+# import sys
 import random
 from PySide6 import QtCore, QtWidgets, QtGui
+# from controller import Controller
 
 
 class MyWidget(QtWidgets.QWidget):
-    def __init__(self):
+    def __init__(self, data):
         super().__init__()
 
-        self.hello = ["Hallo Welt", "Hei maailma", "Hola Mundo", "Привет мир"]
+        self.hello = data
 
         self.button = QtWidgets.QPushButton("Click me!")
         self.text = QtWidgets.QLabel("Hello World",
@@ -21,18 +22,8 @@ class MyWidget(QtWidgets.QWidget):
 
     @QtCore.Slot()
     def magic(self):
-        self.text.setText(random.choice(self.hello))
+        data = random.choice(self.hello)
+        msg = f"{data["msg"]} - {data["name"]}"
+        self.text.setText(msg)
 
-
-
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
-
-    widget = MyWidget()
-    widget.resize(800, 600)
-    widget.show()
-
-    sys.exit(app.exec())
-
-
+# Controller.mainAction()
