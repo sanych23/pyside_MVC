@@ -10,6 +10,14 @@ class FormCategory:
         data = json.loads(data)
         return data
     
+    def getAllNews(self):
+        data = self.getAllData()
+        news = list()
+        for item in data:
+            for new in data[item]:
+                news.append(new)
+        return news
+
     def getAllCategory(self):
         data = self.getAllData()
         categories = list()
@@ -17,7 +25,7 @@ class FormCategory:
             categories.append(key)
         return categories
 
-    def getCategory(self, category):
+    def getNewsCategory(self, category):
         data = self.getAllData()
         for key in data.keys():
             if key == category:
@@ -30,7 +38,7 @@ class FormCategory:
 
 
 
-# FormCategory().getAllCategory()
+# FormCategory().getAllNews()
 
     # _data_hello = ["Hallo Welt", "Hei maailma", "Hola Mundo", "Привет мир"]
 
