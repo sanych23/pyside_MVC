@@ -1,9 +1,5 @@
-# import sys
-import random
-from PySide6 import QtCore, QtWidgets, QtGui
-from model import FormCategory
+from PySide6 import QtCore, QtWidgets
 from helpers.events import Events
-# from controller import Controller
 
 
 class MyWidget(QtWidgets.QWidget, Events):

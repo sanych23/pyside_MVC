@@ -1,6 +1,5 @@
 import json
 
-
 class FormCategory:
     _data_base = "category.txt"
 

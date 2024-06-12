@@ -2,7 +2,6 @@ from model import FormCategory
 
 
 class Events:
-    
     def categoryNews(self, category):
         data = FormCategory().getNewsCategory(category)
         news_feed = ""

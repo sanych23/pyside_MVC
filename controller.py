@@ -8,7 +8,6 @@ class Controller:
         model = FormCategory()
         InitWindow(model.getAllCategory(), model.getAllNews())   
 
-
     def defaultAction(self) -> None:
         pass
 
