@@ -2,38 +2,20 @@
 import random
 from PySide6 import QtCore, QtWidgets, QtGui
 from model import FormCategory
+from helpers.events import Events
 # from controller import Controller
 
 
-class MyWidget(QtWidgets.QWidget):
+class MyWidget(QtWidgets.QWidget, Events):
     def __init__(self, category, news):
         super().__init__()
-
-        # self.hello = data
-
-        # self.button = QtWidgets.QPushButton("Click me!")
-        # self.text = QtWidgets.QLabel("Hello World",
-        #                              alignment=QtCore.Qt.AlignCenter)
-
         self.layout = QtWidgets.QVBoxLayout(self)
-        # self.layout.addWidget(self.text)
-        # self.layout.addWidget(self.button)
+        self.initMenu(category)
+        self.initTextArea(news)
+        
 
-        # self.button.clicked.connect(self.magic)
-
-
-        self.combo = QtWidgets.QComboBox(self)
-        self.combo.addItems(category)
-        self.layout.addWidget(self.combo)
-        self.combo.move(50, 50)
-        self.setGeometry(300, 300, 300, 200)
-        self.combo.currentTextChanged.connect(self.categoryNews)
-        # self.setWindowTitle('QComboBox')
-        # self.show()
-
-
+    def initTextArea(self, news):
         self.newsArea = QtWidgets.QLabel()
-        # newsArea.setFrameStyle(QFrame.Panel | QFrame.Sunken)
         news_feed = ""
         for new in news:
             news_feed = f"{news_feed}{new}\n"
@@ -42,21 +24,10 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.newsArea)
 
 
-
-    def categoryNews(self, category):
-        # print(category)
-        data = FormCategory().getNewsCategory(category)
-        news_feed = ""
-        for new in data:
-            news_feed = f"{news_feed}{new}\n"
-        self.newsArea.setText(news_feed)
-
-
-
-    @QtCore.Slot()
-    def magic(self):
-        data = random.choice(self.hello)
-        msg = f"{data["msg"]} - {data["name"]}"
-        self.text.setText(msg)
-
-# Controller.mainAction()
+    def initMenu(self, category):
+        self.combo = QtWidgets.QComboBox(self)
+        self.combo.addItems(category)
+        self.layout.addWidget(self.combo)
+        self.combo.move(50, 50)
+        self.setGeometry(300, 300, 300, 200)
+        self.combo.currentTextChanged.connect(self.categoryNews)
